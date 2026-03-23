@@ -12,11 +12,14 @@ public class EnemyController : MonoBehaviour
     int direction = 1;
     Animator animator;
     bool broken = true;
+    AudioSource audioSource;
+    public ParticleSystem smokeEffect;
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         timer = changeTime;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -74,5 +77,7 @@ public class EnemyController : MonoBehaviour
        broken = false;
        rigidbody2d.simulated = false;
        animator.SetTrigger("Fixed");
+       audioSource.Stop();
+       smokeEffect.Stop();
    }
 }

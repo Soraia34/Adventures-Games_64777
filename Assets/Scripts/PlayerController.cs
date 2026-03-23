@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDirection = new Vector2 (1,0);
     public GameObject projectilePrefab;
     public InputAction talkAction;
+    AudioSource audioSource;
     
     void Start()
     {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
         currentHealth = maxHealth;
         talkAction.Enable();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -110,4 +112,9 @@ public class PlayerController : MonoBehaviour
                 }
 
         }
+
+         public void PlaySound(AudioClip clip)
+            {
+                audioSource.PlayOneShot(clip);
+            }
 }
